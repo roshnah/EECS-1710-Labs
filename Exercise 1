@@ -1,0 +1,23 @@
+color bgColor = color(250, 200, 152);
+float circleSize = 100;
+
+void setup() {
+  size(800, 600, P2D); // P2D enables 2D GPU acceleration
+  background(bgColor);
+}
+
+void draw() {  
+  if (mousePressed) {
+    ellipseMode(CENTER);
+    fill(172, 204, 239);
+    strokeWeight(5);
+    stroke(255, 0, 255);  
+    ellipse(mouseX, mouseY, circleSize, circleSize);
+    
+    
+    if (mousePressed == true){
+      line(mouseX, mouseY, pmouseX, pmouseY);
+      // this makes the line continuous
+    }
+}
+}
