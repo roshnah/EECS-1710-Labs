@@ -1,4 +1,4 @@
-color bgColor = color(250, 200, 152);
+color bgColor = color(178,34,34);
 float circleSize = 100;
 
 void setup() {
@@ -7,18 +7,31 @@ void setup() {
 }
 
 void draw() {  
+  //BEWARE OF FLASHING LIGHTS AS COLOUR SWITCHES
+  // the invert filer will inverse the previous background colour as well as entire sketch
   if (mousePressed) {
-    ellipseMode(CENTER);
-    fill(172, 204, 239);
-    strokeWeight(5);
+filter(INVERT);
+  noFill();
+  // when the 'a' key is pressed, teal ellipses with a pink outline will be drawn
+    if (key == 'a'){
+      ellipseMode(CENTER);
+    fill(0, 128, 128);
+    strokeWeight(2);
     stroke(255, 0, 255);  
     ellipse(mouseX, mouseY, circleSize, circleSize);
-    
-    
+    }
+    // when the 's' key is pressed, purple triangles with a pink outline will be drawn
+    else if (key == 's'){
+        fill(50,20,60);
+        stroke (255,0,255);
+    triangle(mouseX, mouseY, mouseX, pmouseX, pmouseX, pmouseY);
+     
+    }
+    //if the mouse is pressed, a continuous line will be drawn depending on the mouse's position
     if (mousePressed == true){
       line(mouseX, mouseY, pmouseX, pmouseY);
       // this makes the line continuous
     }
-}
-}
-
+    // when the 'd' key is pressed, the entire screen will clear and the background colour will return to its original value.
+    if (key == 'c'){
+      background(178,34,34);
